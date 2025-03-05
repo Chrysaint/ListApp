@@ -1,9 +1,12 @@
-import { Button } from "./components/Button";
+import { Button, RoundedButton } from "./components/Buttons";
 
 function App() {
   return (
     <>
-      <Button>Hello World</Button>
+      <Button size="small">Hello World</Button>
+      <Button size="medium">Medium World</Button>
+      <Button size="large">Large World</Button>
+      <RoundedButton />
     </>
   );
 }
