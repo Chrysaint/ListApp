@@ -1,5 +1,5 @@
 const Catalogue = () => {
-  return <div>Catalogue</div>;
+  return <h1>catalougue</h1>;
 };
 
 export default Catalogue;

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import * as pallete from "./variables";
+import * as styles from "./variables";
 
 export const GlobalStyle = createGlobalStyle`
     *,
@@ -14,7 +14,9 @@ export const GlobalStyle = createGlobalStyle`
       display: flex;
       flex-direction: column;
       min-height: 100svh;
-      background-color: ${pallete.BACKGROUND_COLOR};
+      background-color: ${styles.COLOR.background};
+      color: ${styles.COLOR.font};
+      font-family: 'Inter', sans-serif;
     }
     
     #root {
@@ -23,6 +25,7 @@ export const GlobalStyle = createGlobalStyle`
     
     a {
       text-decoration: none;
+      color: ${styles.COLOR.font};
     }
 
     img, svg {
@@ -38,5 +41,13 @@ export const GlobalStyle = createGlobalStyle`
         background: none;
     }
 
+    ul, ol {
+      list-style: none;
+    }
+
+    input {
+      border: none;
+      outline: none;
+    }
 
 `;
