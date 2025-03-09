@@ -1,6 +1,6 @@
 import Router from "./app/routes/router";
 import { Wrapper } from "./shared/utils/utils";
-import { Header } from "./widgets/Header";
+import { Header } from "./widgets/header/ui/Header";
 
 function App() {
   return (

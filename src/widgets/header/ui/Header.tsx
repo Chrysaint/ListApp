@@ -10,6 +10,7 @@ import { Link } from "@/shared/ui/Link";
 const StyledHeader = styled.header`
   background-color: ${styles.COLOR.darkBlue};
   padding-block: 20px;
+  margin-bottom: 30px;
 `;
 
 const HeaderWrapper = styled.div`

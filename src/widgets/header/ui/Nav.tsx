@@ -14,7 +14,7 @@ export const Nav = () => {
       {LINKS.map((link) => (
         <Link
           key={link.path}
-          to={link.path}
+          to={link.link}
           className={({ isActive }) => (isActive ? "active" : "")}
         >
           {link.label}
