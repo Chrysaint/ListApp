@@ -2,13 +2,12 @@
 
 ## Installation and run
 
-### To make API work (for russians)
+### If movie catalogue doesn't show up (for Russia)
 
-1. Add these IP addresses to the hosts file:
+1. Change your dns in network adapter settings to:
 
-   - **54.192.99.23 api.tmdb.org**
-   - **138.199.37.231 image.tmdb.org**
-   - **54.192.99.19 images.tmdb.org**
+   - Primary: **9.9.9.9**
+   - Secondary: **192.168.1.1**
 
 2. Start the project locally by running the following commands:
 

@@ -1,10 +1,10 @@
 import { Nav } from "./Nav";
-import { Wrapper } from "@/shared/utils/utils";
+import { Wrapper } from "@/shared/ui/Wrapper";
 import * as styles from "@/app/styles/variables";
 import styled from "styled-components";
 import { Logo } from "@/shared/ui/Logo";
 import LogoIcon from "@assets/icons/logo.svg";
-import { Search } from "./Search";
+import { Search } from "@/widgets/search/ui/Search";
 import { Link } from "@/shared/ui/Link";
 
 const StyledHeader = styled.header`

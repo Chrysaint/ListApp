@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { CardPlayButton } from "./CardPlayButton";
-import { TMDB_API_VALUES } from "@/app/config/config";
+import NoMovieLogo from "@assets/NoMovie.png";
+import { Link } from "react-router-dom";
+import { MovieRate } from "@/shared/ui/MovieRate";
+import * as styles from "@/app/styles/variables";
 
 export const CardHeaderWrapper = styled.div`
   height: 450px;
@@ -22,12 +25,44 @@ export const CardHeaderWrapper = styled.div`
   }
 `;
 
-type Props = { img: string; className?: string };
+const CardHeaderLink = styled(Link)`
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+`;
 
-export const CardHeader = ({ img, className }: Props) => {
+const CardRatings = styled.div`
+  position: absolute;
+  right: 10px;
+  top: 10px;
+`;
+
+type Props = {
+  img: string;
+  id: number;
+  className?: string;
+  ratingKinopoisk?: number;
+  ratingImdb?: number;
+};
+
+export const CardHeader = ({
+  img,
+  id,
+  className,
+  ratingKinopoisk,
+  ratingImdb,
+}: Props) => {
   return (
     <CardHeaderWrapper className={className || ""}>
-      <img src={`${TMDB_API_VALUES.imgURL + img}`} alt="Movie Logo" />
+      <CardHeaderLink to={`/movie/id=${id}`} />
+      <CardRatings>
+        {ratingKinopoisk && (
+          <MovieRate company="kinopoisk" rate={ratingKinopoisk} />
+        )}
+        {ratingImdb && <MovieRate company="imdb" rate={ratingImdb} />}
+      </CardRatings>
+
+      <img src={img !== null ? `${img}` : NoMovieLogo} alt="Movie Logo" />
       <CardPlayButton />
     </CardHeaderWrapper>
   );

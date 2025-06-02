@@ -16,7 +16,9 @@ const Logo = styled.img`
 
 const Rate = styled.span`
   font-size: ${styles.FONT_SIZE.sm};
-  color: black;
+  text-shadow: 1px 0px ${styles.COLOR.black}, -1px 0px ${styles.COLOR.black},
+    0px 1px ${styles.COLOR.black}, 0px -1px ${styles.COLOR.black};
+  color: ${styles.COLOR.white};
 `;
 
 type MovieRateCompany = "kinopoisk" | "imdb";

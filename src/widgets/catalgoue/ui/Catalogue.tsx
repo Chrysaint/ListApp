@@ -17,14 +17,13 @@ export const CatalogueList = (data: TPaginatedCatalogue) => {
   const navigate = useNavigate();
 
   const handlePaginationClick = (event: { selected: number }) => {
-    navigate(`/catalogue/page=${event.selected + 1}`);
+    navigate(`/page=${event.selected + 1}`);
   };
-
   return (
     <>
       <CatalgoueWrapper data-type={data.listType}>
-        {data.list.map((movie) => (
-          <Card key={movie.id} {...movie} />
+        {data.items.map((movie) => (
+          <Card key={movie.kinopoiskId} {...movie} />
         ))}
       </CatalgoueWrapper>
       <ReactPaginate
@@ -33,9 +32,8 @@ export const CatalogueList = (data: TPaginatedCatalogue) => {
         breakLabel="..."
         nextLabel=""
         previousLabel=""
-        marginPagesDisplayed={1}
         pageRangeDisplayed={5}
-        pageCount={data.totalPages}
+        pageCount={5}
         onPageChange={handlePaginationClick}
         forcePage={data.currentPage}
       />

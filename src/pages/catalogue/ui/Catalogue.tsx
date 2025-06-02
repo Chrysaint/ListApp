@@ -1,14 +1,13 @@
-import { CatalogueList } from "@/widgets/catalgoue/ui/Catalogue";
+import { CatalogueList } from "@/widgets/catalgoue";
 import { useParams } from "react-router-dom";
 import { Text } from "@/shared/ui/Text";
 import { useQuery } from "@tanstack/react-query";
-import { fetchMovies } from "@/shared/api/useMovies";
+import { fetchMovies } from "@/shared/api/useKPMovies";
 
-const Catalogue = () => {
+export const Catalogue = () => {
   const { page = "page=1" } = useParams<{ page?: string }>();
   const {
     data: response,
-
     isLoading,
     isError,
     error,
@@ -18,6 +17,7 @@ const Catalogue = () => {
     staleTime: 1000 * 60 * 5,
     gcTime: 1000 * 60 * 10,
   });
+  console.log("tyring to fetch: ", response);
 
   const currentPage = Number(page.split("=")[1]) - 1;
   return (
@@ -36,9 +36,9 @@ const Catalogue = () => {
         <Text>{error.message}</Text>
       ) : (
         <CatalogueList
-          list={response?.movies}
-          totalPages={response?.pages_amount}
           listType="MovieList"
+          items={response?.movies}
+          totalPages={response?.pages_amount}
           currentPage={currentPage}
         />
       )}

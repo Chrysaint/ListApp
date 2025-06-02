@@ -1,8 +1,10 @@
 import styled from "styled-components";
-import { TMovieCard } from "../model/card";
+import { TMovie } from "../model/card";
 import { CardButton } from "./CardFooter";
 import { CardHeader } from "./CardHeader";
 import { Text } from "@/shared/ui/Text";
+import { Link } from "react-router-dom";
+import * as styles from "@/app/styles/variables";
 
 const CardWrapper = styled.li`
   max-width: 300px;
@@ -19,12 +21,35 @@ const CardWrapper = styled.li`
   }
 `;
 
-export const Card = (card: TMovieCard) => {
+const CardNameLink = styled(Link)`
+  display: block;
+  justify-self: center;
+  &:hover > *,
+  &:focus > * {
+    color: ${styles.COLOR.accent};
+  }
+`;
+
+export const Card = (card: TMovie) => {
   return (
-    <CardWrapper data-movie-id={card.id}>
-      <CardHeader className="card-header" img={card.poster_path} />
+    <CardWrapper data-movie-id={card.kinopoiskId}>
+      <CardHeader
+        className="card-header"
+        img={card.posterUrl}
+        id={card.kinopoiskId}
+        ratingKinopoisk={card.ratingKinopoisk}
+        ratingImdb={card.ratingImdb}
+      />
       <CardButton>Добавить в список</CardButton>
-      <Text size="md">{card.title}</Text>
+      <CardNameLink to={`/movie/id=${card.kinopoiskId}`}>
+        <Text size="md">
+          {card.nameRu
+            ? card.nameRu
+            : card.nameEn
+            ? card.nameEn
+            : card.nameOriginal}
+        </Text>
+      </CardNameLink>
     </CardWrapper>
   );
 };

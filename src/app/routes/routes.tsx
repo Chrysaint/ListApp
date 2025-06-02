@@ -1,25 +1,39 @@
-import Index from "@/pages/Index";
 import Catalogue from "@/pages/catalogue/ui/Catalogue";
+import { MoviePage } from "@/pages/movie";
 import { ReactNode } from "react";
 
-type RouteProps = {
-  link: string;
+type TRouteProps = {
   path: string;
   element: ReactNode;
+};
+
+type THeaderNavRoute = {
+  link: string;
   label: string;
 };
 
-export const LINKS: RouteProps[] = [
+export const HEADER_NAV_LINKS: THeaderNavRoute[] = [
   {
     link: "/",
-    path: "/",
-    element: <Index />,
-    label: "Главная",
+    label: "Каталог",
   },
   {
-    link: "/catalogue/page=1",
-    path: "/catalogue/:page",
+    link: "/profile",
+    label: "Профиль",
+  },
+];
+
+export const LINKS: TRouteProps[] = [
+  {
+    path: "/:page",
     element: <Catalogue />,
-    label: "Каталог",
+  },
+  {
+    path: "/:page",
+    element: <Catalogue />,
+  },
+  {
+    path: "movie/:id",
+    element: <MoviePage />,
   },
 ];

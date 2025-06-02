@@ -1,4 +1,4 @@
-import { TMovieCard } from "@/entities/card/model/card";
+import { TMovie } from "@/entities/card/model/card";
 
 export type TPaginatedCatalogue = TMovieCatalogue & {
   totalPages: number;
@@ -7,5 +7,5 @@ export type TPaginatedCatalogue = TMovieCatalogue & {
 
 export type TMovieCatalogue = {
   listType: "MovieList";
-  list: TMovieCard[];
+  items: TMovie[];
 };
