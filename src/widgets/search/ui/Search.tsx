@@ -6,8 +6,10 @@ import { SearchList } from "./SearchList";
 // import { fetchMoviesByQuery } from "@/shared/api/useTMDBSearch";
 // import { useEffect, useState } from "react";
 // import useDebounce from "@/shared/utils/useDebounce";
-import { TMovieCard } from "@/entities/card/model/card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useDebounce from "@/shared/utils/useDebounce";
+import { fetchMoviesByQuery } from "@/shared/api/useKPSearch";
+import { TMovie } from "@/entities/card/model/card";
 
 const SearchWrapper = styled.div`
   position: relative;
@@ -35,18 +37,18 @@ const SearchIconLogo = styled.img`
 
 export const Search = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [searchList, setSearchList] = useState<TMovieCard[]>([]);
+  const [searchList, setSearchList] = useState<TMovie[]>([]);
 
-  // const debouncedSearchValue = useDebounce(searchValue, 500);
-  // useEffect(() => {
-  //   if (debouncedSearchValue) {
-  //     fetchMoviesByQuery(debouncedSearchValue).then((movies) => {
-  //       setSearchList(movies);
-  //     });
-  //   } else {
-  //     setSearchList([]);
-  //   }
-  // }, [debouncedSearchValue]);
+  const debouncedSearchValue = useDebounce(searchValue, 500);
+  useEffect(() => {
+    if (debouncedSearchValue) {
+      fetchMoviesByQuery(debouncedSearchValue).then((movies) => {
+        setSearchList(movies);
+      });
+    } else {
+      setSearchList([]);
+    }
+  }, [debouncedSearchValue]);
 
   function handleSearchInput(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchValue(e.target.value);

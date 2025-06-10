@@ -5,7 +5,7 @@ export const fetchMovies = async (page: string) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "X-API-KEY": `${KP_API_VALUES.api_key}`,
+      "X-API-KEY": KP_API_VALUES.api_key,
     },
   };
 

@@ -27,6 +27,7 @@ export const SearchList = ({ list, elementsToShow }: TSearchList) => {
     <SearchListWrapper>
       {movieList.map((movie) => (
         <SearchItem
+          key={movie.kinopoiskId}
           title={getMovieTitle(movie)}
           image={movie.posterUrlPreview}
           id={movie.kinopoiskId}

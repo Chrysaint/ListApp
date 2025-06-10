@@ -18,12 +18,14 @@ const SearchItemWrapper = styled.div`
 
 const SearchItemImageWrapper = styled.div`
   width: 20%;
-  height: 100%;
+  height: 350px;
+  position: relative;
 `;
 
 const SearchItemImage = styled.img`
+  width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: top;
 `;
 
