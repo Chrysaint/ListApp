@@ -10,7 +10,7 @@ export const fetchMovies = async (page: string) => {
   };
 
   const response = await fetch(
-    `${KP_API_VALUES.baseURL}/v2.2/films?${page}`,
+    `${KP_API_VALUES.baseURL}/v2.2/films/collections?${page}`,
     options
   );
 
@@ -18,5 +18,6 @@ export const fetchMovies = async (page: string) => {
     throw new Error("Ошибка при получении данных :(");
   }
   const data = await response.json();
-  return { movies: data.items, pages_amount: data.total_pages };
+  console.log("data: ", data);
+  return { movies: data.items, pages_amount: data.totalPages };
 };

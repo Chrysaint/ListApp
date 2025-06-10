@@ -15,7 +15,7 @@ const CatalgoueWrapper = styled.ul`
 
 export const CatalogueList = (data: TPaginatedCatalogue) => {
   const navigate = useNavigate();
-
+  console.log(data.totalPages);
   const handlePaginationClick = (event: { selected: number }) => {
     navigate(`/page=${event.selected + 1}`);
   };
@@ -32,8 +32,9 @@ export const CatalogueList = (data: TPaginatedCatalogue) => {
         breakLabel="..."
         nextLabel=""
         previousLabel=""
-        pageRangeDisplayed={5}
-        pageCount={5}
+        pageRangeDisplayed={2}
+        marginPagesDisplayed={2}
+        pageCount={data.totalPages}
         onPageChange={handlePaginationClick}
         forcePage={data.currentPage}
       />
